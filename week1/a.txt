@@ -1,1 +1,1 @@
-hi there 
+In this week1 i learned all the basics of javascript such as datatypes, arrays , objects, functions, and many methods of array and objects 
