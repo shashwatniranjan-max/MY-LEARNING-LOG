@@ -50,22 +50,21 @@
 //  r.then(print);
 // better way
 
-const fs = require("fs")
-function readTheFile(sendthefinalvaluehere){
-    fs.readFile("a.txt", "utf8", (err, data) => {
-        if(err){
-            console.log("error reading this file")
-        }
-        sendthefinalvaluehere(data)
-    })
+class Rectangle {
+    constructor(width,height, color ){
+        this.width = width;
+        this.height = height ;
+        this.color = color;
+    }
+    area() {
+        const area = this.width * this.height;
+        return area;
+    }
+    paint(){
+        console.log(`paint this with color ${this.color}`)
+    }
 }
-function readFile(filename){
-    return new Promise(readTheFile);
-}
-const p = readFile()
-function callback(contents){
-    console.log(contents)
-}
-p.then(callback)
-
+const rect = new Rectangle(4, 5)
+const area = rect.area();
+console.log(area)
 
