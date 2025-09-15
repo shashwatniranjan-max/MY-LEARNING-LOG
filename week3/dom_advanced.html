@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button onclick="addTodo()">Add Todo</button>
+     <button onclick="deleteLastTodo()">Delete last todo</button>
+     <button onclick="deleteFirstTodo()">Delete first todo</button>
+    <div id="todo"></div>
+   
+</body>
+<script>
+    let todos = [];
+    function addTodo() {
+        todos.push({
+            title : document.querySelector("input").value,
+            
+        })
+        render();
+    }
+
+    function deleteLastTodo() {
+        todos.splice(todos.length - 1, 1); // removes last element from the array.
+        render();
+    }
+
+    function deleteFirstTodo() {
+        todos.splice(0, 1);
+        render();
+    }
+
+    function deleteTodo() {
+
+        render();
+    }
+
+    function createTodoComponent(todo) {
+
+        const div = document.createElement("div");
+        const h1 = document.createElement("h1");
+        const button = document.createElement("button")
+        button.innerHTML = "Delete";
+        h1.innerHTML = todo.title;
+        div.appendChild(h1);
+        div.appendChild(button);
+        return div;
+    }
+
+
+    // later in react 
+    function render() {
+        document.querySelector("#todo").innerHTML = "";
+        for(let i = 0; i < todos.length; i++) {
+        const element = createTodoComponent(todos[i]);
+        
+        document.querySelector("#todo").appendChild(element);
+       }      
+
+
+    }
+</script>
+</html>

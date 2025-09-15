@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Todo List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        #todo {
+            width: 300px;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        div[id^="todo-"] {
+            background: white;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideIn 0.3s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        div[id^="todo-"]:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        span[id^="span-"] {
+            flex: 1;
+            font-size: 16px;
+            color: #333;
+            word-wrap: break-word;
+        }
+
+        button[id^="button-"] {
+            background: #ff4757;
+            padding: 8px 16px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        button[id^="button-"]:hover {
+            background: #ff3742;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 0;
+            }
+
+            h1 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+
+            #todo {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10px;
+                display: block;
+            }
+
+            button {
+                width: 100%;
+                display: block;
+            }
+
+            div[id^="todo-"] {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            button[id^="button-"] {
+                margin-left: 0;
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 15px;
+            }
+
+            #todo {
+                padding: 10px 14px;
+                font-size: 14px;
+            }
+
+            button {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+
+            div[id^="todo-"] {
+                padding: 12px 15px;
+                margin: 8px 0;
+            }
+
+            span[id^="span-"] {
+                font-size: 14px;
+            }
+
+            button[id^="button-"] {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 600px;
+                padding: 40px;
+            }
+
+            h1 {
+                font-size: 3em;
+                margin-bottom: 40px;
+            }
+
+            #todo {
+                width: 350px;
+            }
+
+            button {
+                padding: 14px 24px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Todo List</h1>
+        <input type="text" name="" id="todo" placeholder="Enter a new todo...">
+        <button onclick="addTodo()">Add Todo</button>
+    </div>
+</body>
+<script>
+       let ctr = 0;
+
+    function addTodo() {
+      let value = document.querySelector("input").value;
+      if (!value.trim()) return; 
+
+      let newDiv = document.createElement("div");
+      let newSpan = document.createElement("span");
+      let newButton = document.createElement("button");
+
+      newDiv.setAttribute("id", "todo-" + ctr);
+      newSpan.setAttribute("id", "span-" + ctr);
+      newButton.setAttribute("id", "button-" + ctr);
+
+      newSpan.innerHTML = value;
+      newButton.innerHTML = "Delete Todo";
+
+      let currentIndex =  ctr;
+      newButton.onclick = () => deleteTodo(currentIndex);
+
+     
+      newDiv.appendChild(newSpan);
+      newDiv.appendChild(newButton);
+      document.body.appendChild(newDiv);
+
+      document.querySelector("input").value = "";
+      ctr++;
+    }
+
+    function deleteTodo(index) {
+      let Element = document.getElementById("todo-" + index);
+      if (Element) {
+        Element.remove();
+      }
+    }
+
+
+</script>
+</html>
