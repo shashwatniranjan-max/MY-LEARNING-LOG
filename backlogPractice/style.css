@@ -1,0 +1,25 @@
+p {
+    /* font-style: italic; */
+    font-size: 20px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+    
+} 
+h1 {
+    background-color: aquamarine;
+    border-style: solid;
+    border-width: 2px;
+    border-color: brown;
+}
+#firstpara {
+    background-color: yellow;
+    padding: 90px;
+    margin : 90px;
+}
+#secondPara {
+    background-color:bisque;
+}
+#thirdPara {
+    background-color: sandybrown;
+}
