@@ -16,10 +16,28 @@
 //     console.log("file written successfully!")
 // })
 
-const sleep = require("./promise")
-async function demo() {
-    console.log("start");
-    await sleep(3000);
-    console.log("3 seconds have been passed")
+// const sleep = require("./promise")
+// async function demo() {
+//     console.log("start");
+//     await sleep(3000);
+//     console.log("3 seconds have been passed")
+// }
+// demo();
+
+// promise chaining
+function setTimeoutPromisified(ms) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve();
+        }, ms)
+    })
 }
-demo();
+setTimeoutPromisified(1000).then(() => {
+    console.log("1 second has passed");
+    return setTimeoutPromisified(3000)
+}).then(() => {
+    console.log("3 seconds have passed");
+    return setTimeoutPromisified(5000);
+}).then(() => {
+    console.log("5 seconds has passed")
+})

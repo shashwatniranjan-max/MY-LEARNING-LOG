@@ -8,3 +8,4 @@ function triangle(n) {
     }
 } 
 triangle(5);
+
