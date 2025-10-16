@@ -32,12 +32,21 @@ function setTimeoutPromisified(ms) {
         }, ms)
     })
 }
-setTimeoutPromisified(1000).then(() => {
-    console.log("1 second has passed");
-    return setTimeoutPromisified(3000)
-}).then(() => {
-    console.log("3 seconds have passed");
-    return setTimeoutPromisified(5000);
-}).then(() => {
-    console.log("5 seconds has passed")
-})
+// setTimeoutPromisified(1000).then(() => {
+//     console.log("1 second has passed");
+//     return setTimeoutPromisified(3000)
+// }).then(() => {
+//     console.log("3 seconds have passed");
+//     return setTimeoutPromisified(5000);
+// }).then(() => {
+//     console.log("5 seconds has passed")
+// })
+// async function timeout() {
+//     await setTimeoutPromisified(1000);
+//     console.log(" hi ");
+//     await setTimeoutPromisified(3000);
+//     console.log("hi there");
+//     await setTimeoutPromisified(5000);
+//     console.log("hello world");
+// }
+// timeout();
