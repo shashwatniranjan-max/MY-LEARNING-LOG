@@ -50,3 +50,14 @@ function setTimeoutPromisified(ms) {
 //     console.log("hello world");
 // }
 // timeout();
+const fs = require("fs")
+function readFilePromisified(filename) {
+    return new Promise((resolve, reject) => {
+        fs.readFile(filename, "utf-8", (err, data) => {
+            if(err) {
+                reject(err);
+            }
+            resolve(data);
+        })
+    })
+}
