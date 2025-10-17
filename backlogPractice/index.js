@@ -61,3 +61,8 @@ function readFilePromisified(filename) {
         })
     })
 }
+async function read() {
+    await readFilePromisified("a.txt");
+    console.log("file read successfully");
+}
+read();
