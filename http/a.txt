@@ -1,0 +1,1 @@
+Resources : RFC 2616 ("to study how http servers work under the hood")

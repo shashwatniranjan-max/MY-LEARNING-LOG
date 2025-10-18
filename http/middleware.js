@@ -10,13 +10,13 @@ function isOldEnoughMiddleware(req, res, next) {
     }
     else {
         res.json({
-            msg : "Sorry you are not of age yet"
+            msg : "can't access"
         })
     }
 }
 app.get("/ride1", isOldEnoughMiddleware, function(req, res){
     res.json({
-        msg : "you have successfully riden the ride1"
+        msg : "accessed successfully"
     })
 })
 app.listen(3000);
