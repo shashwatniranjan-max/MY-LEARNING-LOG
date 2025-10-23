@@ -73,3 +73,4 @@ async function calculateTime(t1, t2, t3) {
     const timetaken = await calculateTime(1000, 2000, 3000);
     console.log("timetaken ", timetaken, "ms");
 })();
+
