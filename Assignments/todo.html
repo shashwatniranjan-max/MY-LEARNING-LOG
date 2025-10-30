@@ -6,28 +6,26 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <input type="text" name="" id="" placeholder="Write todos...">
-        <button onclick="addTodo()">Add Todo</button>
-    </div>
+    <input type="text " placeholder="write todo ...">
+    <button onclick="addTodo()">Add Todo</button>
+    <div class="container"></div>
     <script>
         let count = 0;
         function addTodo() {
-            const inputEl = document.querySelector("input");
-            const value = inputEl.value.trim();
-            if(value == "") {
-                alert("Todos can't be empty");
-                return;
-            }
+            let inputEl = document.querySelector("input");
+            if(inputEl.value.trim() == "") return;
+            let value = inputEl.value;
             let currentCount = count;
-            const newDiv = document.createElement("div");
-            newDiv.setAttribute("id", "todo" + currentCount);
-            newDiv.innerHTML = value;
+            const div = document.createElement("div");
+            div.setAttribute("id", "todo" + currentCount);
+            const span = document.createElement("span");
+            span.innerHTML = value;
             const button = document.createElement("button");
-            button.innerHTML = "Delete Todo";
+            button.innerHTML = "Delete";
             button.onclick = () => deleteTodo(currentCount);
-            newDiv.appendChild(button);
-            document.querySelector("body").appendChild(newDiv);
+            div.appendChild(span);
+            div.appendChild(button);
+            document.querySelector(".container").appendChild(div);
             inputEl.value = "";
             count++;
         }
